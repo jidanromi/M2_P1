@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRG 4</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body>
+  <!-- Start navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-light fixed-top">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="index.html">Valorant</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="donwload.html">Download</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Agents and Account
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="agent.html">Agents</a></li>
+                  <li><a class="dropdown-item" href="maps.html">Account</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- End navbar -->
+
+      <!-- Start content 1 -->
+      <br><br>
+      <div class="container-fluid text-dark d-flex align-items-center justify-content-center" style="height: 100vh; background-image: url('assets/haven.jpg'); background-repeat: no-repeat; background-size: cover;">
+        <div class="container bg-white p-4 rounded" style="width: 500px; text-align: center;">
+          <h2>Sign In</h2>
+          <br><br><br>
+          <input id="usernameInput" type="text" class="form-control mb-2" placeholder="USERNAME" style="max-width: 300px; margin: 0 auto;">
+          <p id="usernameError" style="color: red"></p>
+          <br>
+          <input id="passwordInput" type="password" class="form-control mb-2" placeholder="PASSWORD" style="max-width: 300px; margin: 0 auto;">
+          <p id="passwordError" style="color: red"></p>
+          <br><br>
+          <button type="button" class="btn btn-primary" onclick="validateSignIn()">Sign In</button>
+        </div>
+      </div>
+      <!-- End content 1 -->
+
+      <!-- Start footer -->
+      <div class="container-fluid d-flex justify-content-center align-items-center border-top bg-dark text-light" style="height: 80px;">
+        <a href="donwload.html"><button type="button" class="btn btn-dark">Download</button></a>
+      </div>
+      <div class="container-fluid d-flex justify-content-center align-items-center bg-dark text-light" style="height: 90px;">
+        <a href="https://www.riotgames.com/en"><img src="assets/riot.png" alt="..." style="height: 30px; margin-right: 20px;"></a>
+        <a href="https://playvalorant.com/id-id/"><img src="assets/valo.png" alt="..." style="height: 40px;"></a>
+      </div>
+      <div class="container-fluid d-flex justify-content-center align-items-center bg-dark text-light" style="height: 90px;">
+        <div class="container-fluid d-flex justify-content-center align-items-center bg-dark text-light" style="height: 90px;">
+          <p style="text-align: center;">© 2023 Riot Games, Inc. Riot Games, VALORANT, dan semua logo terkait adalah merek dagang,<br> merek layanan, dan/atau merek dagang terdaftar Riot Games, Inc.</p>
+        </div>
+      </div>
+      <!-- End Footer -->
+
+      <script>
+        function validateSignIn() {
+          var username = document.getElementById("usernameInput").value;
+          var password = document.getElementById("passwordInput").value;
+          var usernameError = document.getElementById("usernameError");
+          var passwordError = document.getElementById("passwordError");
+  
+          // Reset pesan kesalahan
+          usernameError.innerText = "";
+          passwordError.innerText = "";
+  
+          var valid = true;
+  
+          if (username.trim() === "") {
+            usernameError.innerText = "Username tidak boleh kosong";
+            valid = false;
+          }
+  
+          if (password.trim() === "") {
+            passwordError.innerText = "Password tidak boleh kosong";
+            valid = false;
+          }
+  
+          if (valid) {
+            alert("Login Berhasil!");
+
+            // Reset textbox
+            document.getElementById("usernameInput").value = "";
+            document.getElementById("passwordInput").value = "";
+          }
+        }
+      </script>
+
+    <script src="path-to-bootstrap/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>

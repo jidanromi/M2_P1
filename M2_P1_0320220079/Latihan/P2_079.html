@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <title>P2_079</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+    <div class="header1">P2_079</div>
+
+    <form onsubmit="return validate()">
+        <table>
+            <tbody>
+                <tr>
+                    <td>Nama</td>
+                    <td>:</td>
+                    <td>
+                        <input id="nama" type="text"/>
+                    </td>
+                    <td id="error_nama" style="color: red"></td> <!-- Tambahkan elemen untuk pesan kesalahan -->
+                </tr>
+                <tr>
+                    <td>Mata Kuliah</td>
+                    <td>:</td>
+                    <td>
+                        <select id="matakuliah">
+                            <option value="">Pilih Mata Kuliah</option>
+                            <option value="Matematika">Matematika</option>
+                            <option value="Fisika">Fisika</option>
+                            <option value="Kimia">Kimia</option>
+                        </select>
+                    </td>
+                    <td id="error_matakuliah" style="color: red"></td> <!-- Tambahkan elemen untuk pesan kesalahan -->
+                </tr>
+                <tr>
+                    <td>Nilai</td>
+                    <td>:</td>
+                    <td>
+                        <input id="nilai" type="number" min="0" max="100"/>
+                    </td>
+                    <td id="error_nilai" style="color: red"></td> <!-- Tambahkan elemen untuk pesan kesalahan -->
+                </tr>
+                <tr>
+                    <td>
+                        <button type="button" onclick="reset()">
+                            Batal
+                        </button>
+                    </td>
+                    <td></td>
+                    <td>
+                        <input type="submit" value="Kirim"/>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+    <script>
+        function validate(){
+            //Tambahkan kode validasi disini
+            //return false; //Kembalikan false untuk mencegah pengiriman formulir sementara
+
+            let nama = document.getElementById("nama").value;
+            let matakuliah = document.getElementById("matakuliah").value;
+            let nilai = document.getElementById("nilai").value;
+            let validate = true;
+
+            //Validasi nama
+            if (nama.trim() === ""){
+                document.getElementById("error_nama").innerText = "Harap isi field Nama!"; //Tampilkan pesan kesalahan
+                validate = false;
+            }else if (nama.length >= 20){
+                document.getElementById("error_nama").innerText = "Nama maksimal 20 karakter";
+                validate = false;
+            }else{
+                let namaPattern = /^[a-zA-Z\s]*$/; //Pola regex untuk huruf dan spasi
+                if (!namaPattern.test(nama.trim())) {
+                    document.getElementById("error_nama").innerText = "Nama harus berisi huruf atau spasi!";
+                    validate = false;
+                } else {
+                    document.getElementById("error_nama").innerText = "";
+                }
+            }
+
+            //Validasi Mata Kuliah
+            if(matakuliah === ""){
+                document.getElementById("error_matakuliah").innerText = "Harap pilih Mata Kuliah!"; //Tampilkan pesan
+                validate = false;
+            }else {
+                document.getElementById("error_matakuliah").innerText = ""; //Hapus pesan kesalahan jika valid
+            }
+
+            //Validasi nilai
+            if(nilai === ""){
+                document.getElementById("error_nilai").innerText = "Harap isi field Nilai!"; //Tampilkan pesan kesalahan
+                validate = false;
+            }else {
+                if (nilai >= 100){
+                    document.getElementById("error_nilai").innerText = "Rentang nilai adalah 0 - 100";
+                } else {
+                    document.getElementById("error_nilai").innerText = ""; //Hapus pesan kesalahan jika valid
+                }
+            }
+            return validate;
+        }
+
+        function reset(){
+            document.getElementById("nama").value = "";
+            document.getElementById("matakuliah").value = "";
+            document.getElementById("nilai").value = "";
+            document.getElementById("error_nama").innerText = "";
+            document.getElementById("error_matakuliah").innerText = "";
+            document.getElementById("error_nilai").innerText = "";
+
+            alert("Your answer is cancelled");
+        }
+    </script>
+</body>
+</html>
